@@ -20,11 +20,40 @@ export const getBlock = async (blockId) => {
 export const getTransaction = async (transactionId) => {
   try {
     const response = await apiClient.get(`/transactions/${transactionId}`);
-    return response.data;
+    return response.data
   } catch (error) {
     console.error("Error fetching transaction:", error);
     throw error;
   }
 };
 
-// Add more API interactions as needed
+export const getAccount = async (accountId) => {
+    try {
+      const response = await apiClient.get(`/accounts/${accountId}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching account:", error);
+      throw error;
+    }
+  };
+
+  
+  export const getRecentBlocks = async () => {
+    try {
+      const response = await apiClient.get(`/ledgers`);
+      return response.data._embedded.records;
+    } catch (error) {
+      console.error("Error fetching recent blocks:", error);
+      throw error;
+    }
+  };
+  
+  export const getRecentTransactions = async () => {
+    try {
+      const response = await apiClient.get(`/transactions`);
+      return response.data._embedded.records;
+    } catch (error) {
+      console.error("Error fetching recent transactions:", error);
+      throw error;
+    }
+  };
