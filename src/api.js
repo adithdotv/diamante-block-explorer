@@ -41,6 +41,7 @@ export const getAccount = async (accountId) => {
   export const getRecentBlocks = async () => {
     try {
       const response = await apiClient.get(`/ledgers`);
+      console.log("block: "+response.data)
       return response.data._embedded.records;
     } catch (error) {
       console.error("Error fetching recent blocks:", error);

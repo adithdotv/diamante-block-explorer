@@ -1,6 +1,7 @@
 // src/App.js
 import React, { useEffect, useState } from 'react';
 import { getBlock, getTransaction, getAccount, getRecentBlocks, getRecentTransactions } from './api';
+import { filterTransactionData, filterAccountData } from './utils';
 
 function App() {
   const [searchType, setSearchType] = useState('block');
@@ -39,6 +40,7 @@ function App() {
         data = await getBlock(searchId);
       } else if (searchType === 'transaction') {
         data = await getTransaction(searchId);
+        data = filterTransactionData(data)
       } else {
         data = await getAccount(searchId);
       }
