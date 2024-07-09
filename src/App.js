@@ -18,6 +18,7 @@ function App() {
         const blocks = await getRecentBlocks();
         setRecentBlocks(blocks);
         const transactions = await getRecentTransactions();
+        console.log(transactions)
         setRecentTransactions(transactions);
       } catch (error) {
         console.error("Failed to fetch recent data:", error);
